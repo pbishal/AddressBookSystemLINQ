@@ -46,5 +46,19 @@ namespace AddressBookLinq
                 Console.WriteLine("FirstName: " + "\t" + record.Field<string>("FirstName") + "\t" + "LastName: " + "\t" + record.Field<string>("LastName") + "\t" + "Address: " + record.Field<string>("Address") + "\t" + "City: " + record.Field<string>("City") + "\t" + " State: " + record.Field<string>("State") + "\t" + "Zip: " + record.Field<int>("Zip") + "\t" + " PhoneNumber: " + record.Field<double>("PhoneNumber") + "\t" + "EmailID: " + record.Field<string>("Email"));
             }
         }
+        //UC4 Editing exiting Contact Details.
+        public static void EditExistingContactDetails(string firstName, string lastName, int zip)
+        {
+            Console.WriteLine("\n Edit existing contacts details");
+            (from p in table.AsEnumerable()
+             where p.Field<string>("FirstName") == firstName && p.Field<string>("LastName") == lastName
+             select p).ToList().ForEach(x => x[5] = zip);
+            //Printing data
+            Console.WriteLine("\nDataTable contents:");
+            foreach (var record in table.AsEnumerable())
+            {
+                Console.WriteLine("FirstName: " + "\t" + record.Field<string>("FirstName") + "\t" + "LastName: " + "\t" + record.Field<string>("LastName") + "\t" + "Address: " + record.Field<string>("Address") + "\t" + "City: " + record.Field<string>("City") + "\t" + " State: " + record.Field<string>("State") + "\t" + "Zip: " + record.Field<int>("Zip") + "\t" + " PhoneNumber: " + record.Field<double>("PhoneNumber") + "\t" + "EmailID: " + record.Field<string>("Email"));
+            }
+        }
     }
 }

@@ -12,7 +12,9 @@ namespace AddressBookLinq
         {
             Console.WriteLine("Welcome to Addressbook System Using Linq");
             AddressBookDataTable.AddDataIntoTable();
+            AddressBookDataTable.EditExistingContactDetails("Prabhat", "Kumar", 751030);
             Console.ReadLine();
+
         }
     }
 }
