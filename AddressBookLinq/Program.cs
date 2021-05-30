@@ -15,7 +15,8 @@ namespace AddressBookLinq
             //AddressBookDataTable.EditExistingContactDetails("Prabhat", "Kumar", 751030);
             //AddressBookDataTable.DeleteContactUsingName();
             //AddressBookDataTable.RetrievingContactDetailsByCityOrState();
-            AddressBookDataTable.GetCountOfContactInCityOrState();
+            //AddressBookDataTable.GetCountOfContactInCityOrState();
+            AddressBookDataTable.SortedContactsByNameForAgivenCity("Bhubaneswar");
             Console.ReadLine();
 
         }

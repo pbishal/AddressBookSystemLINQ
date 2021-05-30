@@ -116,5 +116,21 @@ namespace AddressBookLinq
                 Console.WriteLine($"City : {record.State}, Number Of Contacts : {record.NumberOfContacts}");
             }
         }
+
+        // UC8 Retrieves the records sorted by name for a given city.
+
+        public static void SortedContactsByNameForAgivenCity(string City)
+        {
+            Console.WriteLine("Sorting by name for City");
+            var retrievedData = from records in table.AsEnumerable()
+                                where records.Field<string>("City") == City
+                                orderby records.Field<string>("FirstName"), records.Field<string>("LastName")
+                                select records;
+            ///Print Data
+            foreach (var record in retrievedData)
+            {
+                Console.WriteLine("FirstName: " + "\t" + record.Field<string>("FirstName") + "\t" + "LastName: " + "\t" + record.Field<string>("LastName") + "\t" + "Address: " + record.Field<string>("Address") + "\t" + "City: " + record.Field<string>("City") + "\t" + " State: " + record.Field<string>("State") + "\t" + "Zip: " + record.Field<int>("Zip") + "\t" + " PhoneNumber: " + record.Field<double>("PhoneNumber") + "\t" + "EmailID: " + record.Field<string>("Email"));
+            }
+        }
     }
 }
