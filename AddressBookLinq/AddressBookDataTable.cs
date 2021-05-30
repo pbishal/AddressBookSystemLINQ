@@ -34,7 +34,7 @@ namespace AddressBookLinq
             table.PrimaryKey = primaryKeys;
 
             ///Adding rows
-            table.Rows.Add("Prateek", "Dash", "patia", "Bhubaneswar", "Odiha", 700658, "9436588969", "dprat@gmail.com");
+            table.Rows.Add("Prateek", "Dash", "patia", "Bhubaneswar", "Odisha", 700658, "9436588969", "dprat@gmail.com");
             table.Rows.Add("Shailesh", "Satapathy", "BN", "Ganjam", "Odisha", 700528, "7008945698", "shailesh@gmail.com");
             table.Rows.Add("Niraj", "Kumar", "Narwa", "Jamshedpur", "Jharkhand", 755258, "9656322121", "niraj@gmail.com");
             table.Rows.Add("Prabhat", "Kumar", "Sasa", "Sasaram", "Bihar", 569696, "6966544858", "prabhat@gmail.com");
@@ -74,6 +74,21 @@ namespace AddressBookLinq
             //Printing data
             Console.WriteLine("\nDataTable contents:");
             foreach (var record in table.AsEnumerable())
+            {
+                Console.WriteLine("FirstName: " + "\t" + record.Field<string>("FirstName") + "\t" + "LastName: " + "\t" + record.Field<string>("LastName") + "\t" + "Address: " + record.Field<string>("Address") + "\t" + "City: " + record.Field<string>("City") + "\t" + " State: " + record.Field<string>("State") + "\t" + "Zip: " + record.Field<int>("Zip") + "\t" + " PhoneNumber: " + record.Field<double>("PhoneNumber") + "\t" + "EmailID: " + record.Field<string>("Email"));
+            }
+        }
+
+        // UC6 Retrieving Contact Details By State Or City Name.
+
+        public static void RetrievingContactDetailsByCityOrState()
+        {
+            var retrieveData = from records in table.AsEnumerable()
+                               where (records.Field<string>("City").Equals("Bhubaneswar") || records.Field<string>("State").Equals("Odisha"))
+                               select records;
+            //Printing data
+            Console.WriteLine("\nRetrieved contactact details by city or state name :");
+            foreach (var record in retrieveData)
             {
                 Console.WriteLine("FirstName: " + "\t" + record.Field<string>("FirstName") + "\t" + "LastName: " + "\t" + record.Field<string>("LastName") + "\t" + "Address: " + record.Field<string>("Address") + "\t" + "City: " + record.Field<string>("City") + "\t" + " State: " + record.Field<string>("State") + "\t" + "Zip: " + record.Field<int>("Zip") + "\t" + " PhoneNumber: " + record.Field<double>("PhoneNumber") + "\t" + "EmailID: " + record.Field<string>("Email"));
             }
