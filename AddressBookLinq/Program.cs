@@ -11,8 +11,9 @@ namespace AddressBookLinq
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Addressbook System Using Linq");
-            AddressBookDataTable.AddDataIntoTable();
-            AddressBookDataTable.EditExistingContactDetails("Prabhat", "Kumar", 751030);
+            //AddressBookDataTable.AddDataIntoTable();
+            //AddressBookDataTable.EditExistingContactDetails("Prabhat", "Kumar", 751030);
+            AddressBookDataTable.DeleteContactUsingName();
             Console.ReadLine();
 
         }

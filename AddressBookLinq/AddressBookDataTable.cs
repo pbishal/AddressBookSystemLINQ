@@ -60,5 +60,23 @@ namespace AddressBookLinq
                 Console.WriteLine("FirstName: " + "\t" + record.Field<string>("FirstName") + "\t" + "LastName: " + "\t" + record.Field<string>("LastName") + "\t" + "Address: " + record.Field<string>("Address") + "\t" + "City: " + record.Field<string>("City") + "\t" + " State: " + record.Field<string>("State") + "\t" + "Zip: " + record.Field<int>("Zip") + "\t" + " PhoneNumber: " + record.Field<double>("PhoneNumber") + "\t" + "EmailID: " + record.Field<string>("Email"));
             }
         }
+
+        // UC5 Delete Person Contact Using Name.
+
+        public static void DeleteContactUsingName()
+        {
+            //Retrieve the datarow containing given name
+            var records = (from p in table.AsEnumerable()
+                           where p.Field<string>("FirstName").Equals("Prabhat") && p.Field<string>("LastName").Equals("Kumar")
+                           select p).FirstOrDefault();
+            //Delete the row
+            records.Delete();
+            //Printing data
+            Console.WriteLine("\nDataTable contents:");
+            foreach (var record in table.AsEnumerable())
+            {
+                Console.WriteLine("FirstName: " + "\t" + record.Field<string>("FirstName") + "\t" + "LastName: " + "\t" + record.Field<string>("LastName") + "\t" + "Address: " + record.Field<string>("Address") + "\t" + "City: " + record.Field<string>("City") + "\t" + " State: " + record.Field<string>("State") + "\t" + "Zip: " + record.Field<int>("Zip") + "\t" + " PhoneNumber: " + record.Field<double>("PhoneNumber") + "\t" + "EmailID: " + record.Field<string>("Email"));
+            }
+        }
     }
 }
